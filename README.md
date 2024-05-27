@@ -34,9 +34,9 @@ SELECT
 FROM 
     rides_ride r
 JOIN 
-    rides_rideevent pe ON r.id = pe.ride_id AND pe.event_type = 'pickup'
+    rides_rideevent pe ON r.id = pe.ride_id AND pe.description = 'Status changed to pickup'
 JOIN 
-    rides_rideevent de ON r.id = de.ride_id AND de.event_type = 'dropoff'
+    rides_rideevent de ON r.id = de.ride_id AND de.description = 'Status changed to dropoff'
 WHERE 
     de.created_at - pe.created_at > INTERVAL '1 hour'
 GROUP BY 
