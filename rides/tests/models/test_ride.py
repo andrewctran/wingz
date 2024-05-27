@@ -1,7 +1,11 @@
-from django.test import TestCase
-from rides.models import Ride, User
-from django.utils import timezone
 from datetime import timedelta
+
+from django.test import TestCase
+from django.utils import timezone
+
+from rides.models.ride import Ride
+from rides.models.user import User
+
 
 class RideModelTestCase(TestCase):
     def setUp(self):
@@ -19,7 +23,7 @@ class RideModelTestCase(TestCase):
             email="rider@example.com",
             username="rider@example.com",
             phone_number="0987654321",
-            role="user"
+            role="user",
         )
 
     def test_ride_creation(self):
@@ -31,7 +35,7 @@ class RideModelTestCase(TestCase):
             pickup_longitude=-74.0060,
             dropoff_latitude=34.0522,
             dropoff_longitude=-118.2437,
-            pickup_time=timezone.now() + timedelta(hours=1)
+            pickup_time=timezone.now() + timedelta(hours=1),
         )
 
         self.assertIsNotNone(ride)

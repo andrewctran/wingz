@@ -1,0 +1,24 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 19.10b0
+    hooks:
+      - id: black
+        args: [-q]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.1.0
+    hooks:
+      - id: flake8
+
+  - repo: local
+    hooks:
+        # A locally-managed copy of https://github.com/pre-commit/mirrors-isort
+        # so that isort properly detects our 1st- and 3rd-party packages.
+      - id: isort
+        name: isort
+        entry: isort
+        language: python
+        "types": [python]
+        args: []
+        require_serial: false
+        additional_dependencies: []

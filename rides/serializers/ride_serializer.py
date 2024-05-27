@@ -1,10 +1,12 @@
+from datetime import timedelta
+
+from django.utils import timezone
 from rest_framework import serializers
 
 from rides.models.ride import Ride
 from rides.serializers.ride_event_serializer import RideEventSerializer
 from rides.serializers.user_serializer import UserSerializer
-from django.utils import timezone
-from datetime import timedelta
+
 
 class RideSerializer(serializers.ModelSerializer):
     rider = UserSerializer(read_only=True)
@@ -13,7 +15,14 @@ class RideSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Ride
-        fields = ['id', 'rider', 'driver', 'pickup_time', 'status', 'todays_ride_events']
+        fields = [
+            "id",
+            "rider",
+            "driver",
+            "pickup_time",
+            "status",
+            "todays_ride_events",
+        ]
 
     def get_todays_ride_events(self, obj):
         now = timezone.now()

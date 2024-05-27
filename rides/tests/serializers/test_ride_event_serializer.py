@@ -1,7 +1,10 @@
 from django.test import TestCase
-from rides.models import Ride, RideEvent, User
-from rides.serializers import RideEventSerializer
 from django.utils import timezone
+
+from rides.models.ride import Ride
+from rides.models.user import User
+from rides.serializers.ride_event_serializer import RideEventSerializer
+
 
 class RideEventSerializerTestCase(TestCase):
     def setUp(self):
@@ -19,7 +22,7 @@ class RideEventSerializerTestCase(TestCase):
             email="rider@example.com",
             username="rider@example.com",
             phone_number="0987654321",
-            role="user"
+            role="user",
         )
 
         self.ride = Ride.objects.create(
@@ -30,16 +33,16 @@ class RideEventSerializerTestCase(TestCase):
             pickup_longitude=-74.0060,
             dropoff_latitude=34.0522,
             dropoff_longitude=-118.2437,
-            pickup_time=timezone.now()
+            pickup_time=timezone.now(),
         )
 
     def test_ride_event_serializer(self):
         data = {
-            'ride': self.ride.id,
-            'description': 'Test event',
+            "ride": self.ride.id,
+            "description": "Test event",
         }
         serializer = RideEventSerializer(data=data)
         self.assertTrue(serializer.is_valid())
         ride_event = serializer.save()
 
-        self.assertEqual(ride_event.description, 'Test event')
+        self.assertEqual(ride_event.description, "Test event")

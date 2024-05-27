@@ -1,3 +1,0 @@
-from rides.serializers.ride_serializer import RideSerializer
-from rides.serializers.ride_event_serializer import RideEventSerializer
-from rides.serializers.user_serializer import UserSerializer

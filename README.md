@@ -16,8 +16,8 @@ docker-compose run web python manage.py test rides.tests
 ## Performance Notes
 ### Ensuring Efficient Database Queries
 In views/ride_views.py, the database queries will be optimized as follows:
-	1. First SQL Query: Retrieves the rides along with related rider and driver using `select_related`.
- 	2. Second SQL Query: Uses `prefetch_related` to retrieve `RideEvent` objects filtered to the last 24 hours.
+1. First SQL Query: Retrieves the rides along with related rider and driver using `select_related`.
+2. Second SQL Query: Uses `prefetch_related` to retrieve `RideEvent` objects filtered to the last 24 hours.
 
 ## BONUS: SQL Query
 The thought-process is:
