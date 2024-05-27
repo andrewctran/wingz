@@ -1,0 +1,7 @@
+Django>=3.2,<4.0
+djangorestframework
+django-filter
+dj-database-url
+psycopg2-binary
+geopy
+freezegun
