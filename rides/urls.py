@@ -1,6 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import RideViewSet, UserViewSet, RideEventViewSet
+from rides.views.user_views import UserViewSet
+from rides.views.ride_event_views import RideEventViewSet
 
 router = DefaultRouter()
 router.register(r'rides', RideViewSet)
